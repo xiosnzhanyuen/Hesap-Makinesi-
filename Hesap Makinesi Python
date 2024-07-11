@@ -1,0 +1,46 @@
+def toplama(x, y):
+    return x + y
+    
+def cikarma(x, y):
+    return x - y
+
+def carpma(x, y):
+    return x * y
+    
+def bolme(x, y):
+  if y == 0:
+      return "Sıfıra Bölme Hatası!"
+  else:
+      return x / y
+      
+def main():
+    while True:
+      print("Hesap Makinesi")
+      print("1. Toplama")
+      print("2. Çıkarma")
+      print("3. Çarpma")
+      print("4. Bölme")
+      print("5. Çıkış")
+      
+      secim = input("Lütfen bir işlem seçin (1/2/3/4/5):")
+
+      if secim in ('1', '2', '3', '4'):
+        sayi1 = float(input("İlk Sayıyı Girin:"))
+        sayi2 = float(input("İkinci Sayıyı Girin:"))
+        
+        if secim == '1':
+            print("Sonuç:", toplama(sayi1, sayi2))
+        elif secim == '2':
+            print("Sonuç:", cikarma(sayi1, sayi2))
+        elif secim == '3':
+            print("Sonuç:", carpma(sayi1, sayi2))
+        elif secim == '4':
+            print("Sonuç:", bolme(sayi1, sayi2))
+        elif secim == '5':
+            print("Çıkış Yapılıyor...")
+            break
+        else:
+            print("Geçersiz giriş! Lütfen tekrar deneyin 1 ve 5 arasında bir seçenek seçin.")
+
+if __name__ == "__main__":
+    main()
