@@ -1,0 +1,77 @@
+import os
+
+def load_tasks(filename="tasks.txt"):
+    """
+    Dosyadan görevleri yükler.
+    Eğer dosya bulunamazsa boş bir liste döner.
+    """
+    try:
+        with open(filename, "r") as file:
+            tasks = file.read().splitlines()
+    except FileNotFoundError:
+        tasks = []
+    return tasks
+
+def save_tasks(tasks, filename="tasks.txt"):
+    """
+    Görev listesini dosyaya kaydeder.
+    """
+    file_path = os.path.join(os.getcwd(), filename)
+    with open(file_path, "w") as file:
+        file.write("\n".join(tasks))
+
+def display_tasks(tasks):
+    """
+    Görev listesini ekranda gösterir.
+    Eğer liste boşsa, kullanıcıya bildirir.
+    """
+    if not tasks:
+        print("Görev listesi boş.")
+    else:
+        for idx, task in enumerate(tasks, start=1):
+            print(f"{idx}. {task}")
+
+def main():
+    """
+    Ana program döngüsü.
+    Kullanıcıdan giriş alarak görev ekleme, görüntüleme, silme ve çıkış işlemlerini yönetir.
+    """
+    tasks = load_tasks()
+
+    while True:
+        print("\n1. Görev Ekle")
+        print("2. Görevleri Görüntüle")
+        print("3. Görev Sil")
+        print("4. Çıkış")
+        
+        choice = input("Bir seçenek seçin: ")
+        
+        if choice == '1':
+            # Görev ekleme
+            task = input("Eklenecek görevi girin: ")
+            tasks.append(task)
+            save_tasks(tasks)
+        elif choice == '2':
+            # Görevleri görüntüleme
+            display_tasks(tasks)
+        elif choice == '3':
+            # Görev silme
+            display_tasks(tasks)
+            try:
+                task_num = int(input("Silinecek görev numarasını girin: "))
+                if 0 < task_num <= len(tasks):
+                    tasks.pop(task_num - 1)
+                    save_tasks(tasks)
+                else:
+                    print("Geçersiz görev numarası.")
+            except ValueError:
+                print("Geçersiz giriş, lütfen bir sayı girin.")
+        elif choice == '4':
+            # Programdan çıkış
+            print("Çıkış yapılıyor...")
+            break
+        else:
+            print("Geçersiz seçenek, tekrar deneyin.")
+
+if __name__ == "__main__":
+    main()
