@@ -1,0 +1,37 @@
+def kisi_ekle(adres_defteri):
+    isim = input("İsim: ")
+    telefon = input("Telefon Numarası: ")
+    adres_defteri[isim] = telefon
+    print("Kişi eklendi.")
+
+def kisileri_goster(adres_defteri):
+    if adres_defteri:
+        print("Adres Defteri:")
+        for isim, telefon in adres_defteri.items():
+            print(f"İsim: {isim}, Telefon: {telefon}")
+    else:
+        print("Adres defterinde henüz kişi yok.")
+
+def main():
+    adres_defteri = {}
+    
+    while True:
+        print("\nAdres Defteri")
+        print("1. Kişi Ekle")
+        print("2. Kişileri Göster")
+        print("3. Çıkış")
+        
+        secim = input("Seçiminiz: ")
+        
+        if secim == '1':
+            kisi_ekle(adres_defteri)
+        elif secim == '2':
+            kisileri_goster(adres_defteri)
+        elif secim == '3':
+            print("Çıkış yapılıyor.")
+            break
+        else:
+            print("Geçersiz seçim.")
+
+if __name__ == "__main__":
+    main()
