@@ -1,0 +1,24 @@
+def para_donustur(miktar, kur):
+    return miktar * kur
+
+def main():
+    print("Çevrimdışı Para Birimi Dönüştürücü")
+    print("1. USD to TRY")
+    print("2. EUR to TRY")
+    
+    secim = input("Dönüştürülecek para birimini seçin: ")
+    miktar = float(input("Miktarı girin: "))
+    
+    if secim == '1':
+        kur = 27.0  # USD to TRY döviz kuru
+        sonuc = para_donustur(miktar, kur)
+        print(f"{miktar} USD, {sonuc} TRY ediyor.")
+    elif secim == '2':
+        kur = 31.5  # EUR to TRY döviz kuru
+        sonuc = para_donustur(miktar, kur)
+        print(f"{miktar} EUR, {sonuc} TRY ediyor.")
+    else:
+        print("Geçersiz seçim.")
+
+if __name__ == "__main__":
+    main()
