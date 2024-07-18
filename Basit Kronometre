@@ -1,0 +1,16 @@
+import time
+
+def kronometre():
+    input("Başlamak için Enter tuşuna basın.")
+    baslangic_zamani = time.time()
+    
+    try:
+        while True:
+            gecen_sure = time.time() - baslangic_zamani
+            print(f"Geçen Süre: {gecen_sure:.2f} saniye", end='\r')
+            time.sleep(0.01)
+    except KeyboardInterrupt:
+        print("\nKronometre durduruldu.")
+
+if __name__ == "__main__":
+    kronometre()
