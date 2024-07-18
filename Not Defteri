@@ -1,0 +1,36 @@
+def not_ekle(notlar):
+    yeni_not = input("Yeni notu girin: ")
+    notlar.append(yeni_not)
+    print("Not eklendi.")
+
+def notlari_goster(notlar):
+    if notlar:
+        print("Notlar:")
+        for idx, not_ in enumerate(notlar, 1):
+            print(f"{idx}. {not_}")
+    else:
+        print("Henüz not eklenmedi.")
+
+def main():
+    notlar = []
+    
+    while True:
+        print("\nNot Defteri")
+        print("1. Not Ekle")
+        print("2. Notları Göster")
+        print("3. Çıkış")
+        
+        secim = input("Seçiminiz: ")
+        
+        if secim == '1':
+            not_ekle(notlar)
+        elif secim == '2':
+            notlari_goster(notlar)
+        elif secim == '3':
+            print("Çıkış yapılıyor.")
+            break
+        else:
+            print("Geçersiz seçim.")
+
+if __name__ == "__main__":
+    main()
