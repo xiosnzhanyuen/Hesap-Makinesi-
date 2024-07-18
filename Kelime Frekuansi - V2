@@ -1,0 +1,43 @@
+def kelime_frekuansi(metin):
+    #Metni küçük harfe çevirip kelimelere ayırmak
+    kelimeler = metin.lower().split()
+
+    frekanslar = {}
+
+    for kelime in kelimeler:
+        #Kelimenin sonunda noktalama işareti varsa kaldırma
+        kelime = kelime.strip(".,!?")
+
+        #Kelimenin frekansını güncelleme
+        if kelime in frekanslar:
+            frekanslar[kelime] += 1
+        else:
+            frekanslar[kelime] = 1
+
+    return frekanslar
+
+def dosyadan_veri_oku(dosya_adi):
+    try:
+        with open(dosya_adi, 'r', encoding='utf-8') as dosya:
+            metin = dosya.read()
+        return metin
+    except FileNotFoundError:
+        print(f"{dosya_adi} adlı dosya bulunamadı.")
+        return None
+    except Exception as e:
+        print(f"Dosya okuma hatası: {str(e)}")
+        return None
+
+def main():
+    dosya_adi = input("Okunacak dosyanın adını girin: ")
+    veri = dosyadan_veri_oku(dosya_adi)
+
+    if veri:
+        frekanslar = kelime_frekuansi(veri)
+
+        print("\nKelimelerin Frekansları:")
+        for kelime, frekans in frekanslar.items():
+            print(f"{kelime}: {frekans}")
+
+if __name__ == "__main__":
+    main()
