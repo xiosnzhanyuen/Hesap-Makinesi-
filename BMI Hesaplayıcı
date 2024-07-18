@@ -1,0 +1,22 @@
+def bmi_hesapla(kilo, boy):
+    return kilo / (boy ** 2)
+
+def main():
+    print("BMI Hesaplayıcı")
+    kilo = float(input("Kilonuzu (kg) girin: "))
+    boy = float(input("Boyunuzu (metre) girin: "))
+    
+    bmi = bmi_hesapla(kilo, boy)
+    print(f"Vücut Kitle İndeksiniz (BMI): {bmi:.2f}")
+
+    if bmi < 18.5:
+        print("Durum: Zayıf")
+    elif 18.5 <= bmi < 24.9:
+        print("Durum: Normal")
+    elif 25 <= bmi < 29.9:
+        print("Durum: Fazla Kilolu")
+    else:
+        print("Durum: Obez")
+
+if __name__ == "__main__":
+    main()
