@@ -1,0 +1,22 @@
+import random
+
+def sayi_tahmin_oyunu():
+    sayi = random.randint(1, 100)
+    tahmin = None
+    tahmin_sayisi = 0
+
+    print("1 ile 100 arasında bir sayı tahmin edin.")
+
+    while tahmin != sayi:
+        tahmin = int(input("Tahmininiz: "))
+        tahmin_sayisi += 1
+
+        if tahmin < sayi:
+            print("Daha büyük bir sayı tahmin edin.")
+        elif tahmin > sayi:
+            print("Daha küçük bir sayı tahmin edin.")
+    
+    print(f"Tebrikler! {tahmin_sayisi} tahminde doğru sayıyı buldunuz.")
+
+if __name__ == "__main__":
+    sayi_tahmin_oyunu()
