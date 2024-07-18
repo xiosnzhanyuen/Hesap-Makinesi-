@@ -1,0 +1,28 @@
+def kelime_frekuansi(metin):
+    #Metni küçük harfe çevirip kelimelere ayırma.)
+    kelimeler = metin.lower().split()
+
+    frekanslar = {}
+
+    for kelime in kelimeler:
+        #Kelimenin sonunda noktalama işareti varsa kaldırma;)
+        kelime = kelime.strip(".,!?")
+
+        #Kelimenin frekansını güncellem XD
+        if kelime in frekanslar:
+            frekanslar[kelime] += 1
+        else:
+            frekanslar[kelime] = 1
+
+    return frekanslar
+
+def main():
+    metin = input("Metin girin: ")
+    frekanslar = kelime_frekuansi(metin)
+
+    print("\nKelimelerin Frekansları:")
+    for kelime, frekans in frekanslar.items():
+        print(f"{kelime}: {frekans}")
+
+if __name__ == "__main__":
+    main()
