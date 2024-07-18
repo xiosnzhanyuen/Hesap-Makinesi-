@@ -1,0 +1,14 @@
+import random
+
+def loto_cekilisi():
+    sayilar = random.sample(range(1, 50), 6)
+    sayilar.sort()
+    return sayilar
+
+def main():
+    print("Sayısal Loto Çekilişi")
+    cekilis = loto_cekilisi()
+    print("Çekiliş Sonuçları:", cekilis)
+
+if __name__ == "__main__":
+    main()
